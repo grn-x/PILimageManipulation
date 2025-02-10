@@ -7,7 +7,7 @@ with open('ignore/paths.txt') as f:
     paths = [line.strip() for line in f.readlines()]
 
 
-input_dir = paths[0]
+input_dir = paths[0] #15
 output_dir = paths[1]
 padding = 20
 border_padding = 90
@@ -92,7 +92,7 @@ def create_radial_gradient(width, height, center_color, edge_color):
     return image
 
 
-def create_canvas_with_gradient(width=canvas_width, height=canvas_height, center_color=(200, 200, 200), edge_color=(75, 75, 75)):
+def create_canvas_with_gradient(width=canvas_width, height=canvas_height, center_color=(200, 200, 200), edge_color=(60, 60, 60)):#edge_color=(75, 75, 75)):
     """
     Creates a canvas with a radial gradient background. Wraps the create_radial_gradient function for convenience and quick changes.
 
@@ -148,7 +148,7 @@ def adjust_text_right_dpr(text, font, available_width, draw):
 def adjust_text(text, font = None, available_width= 0, draw = None):
     initial_text = text
     # Hardcoding replacements
-    text = text.replace('Landschaften ', 'Landschaften \n')
+    text = text.replace(' Landschaften ', '\nLandschaften')
     text = text.replace('Phantastische ', 'Phantastische \n')
     #text = text.replace('Alles Fuer ', 'Alles Für \n')
     text = text.replace('Alles Fuer ', 'Alles Für ')
@@ -165,6 +165,9 @@ def adjust_text(text, font = None, available_width= 0, draw = None):
     text = text.replace('Duerer', 'Dürer')
     text = text.replace('Doodle2', 'Doodle')
     text = text.replace('Gefässe', 'Gefäße')
+    text = text.replace('Griech', 'Griechische Vasen')
+    text = text.replace('Griechische Vasenische Vasen', 'Griechische Vasen')
+    text = text.replace('Perspektivisches ', 'Perspektivisches\n')
 
     return text
 
@@ -175,7 +178,7 @@ def add_spaces_to_project_name(project):
 
 
 def create_canvas_one(images, captions, output_path, project, class_level,year, single_double_full_size, text_left=True):
-    image = str(images[0])
+    image = images[0]
     caption = str(captions[0])
 
     # Determine the size of each cell
@@ -678,7 +681,8 @@ for root, dirs, files in os.walk(input_dir):
         output_filename = get_unique_filename(output_dir, output_filename)
         output_path = os.path.join(output_dir, output_filename)
         year = root.split('\\')[-2].replace('_', '/')
-        create_canvas(images, captions, output_path, project, class_level, year)
+        #create_canvas(images, captions, output_path, project, class_level, year)
+        create_canvas(images, ['','','',''], output_path, project, class_level, year)
         num_files_saved += 1
 
 print(f"Processed {num_files_saved} images")

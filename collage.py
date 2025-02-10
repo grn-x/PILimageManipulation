@@ -7,11 +7,13 @@ Modified to handle recursive directory scanning
 import os
 from PIL import Image
 
+import HeicToJpg
 
-def get_all_images(folder_path):
-    """
-    Recursively get all image files from folder_path and its subfolders
-    """
+Image.MAX_IMAGE_PIXELS = 933120000 # needed for 4k
+
+
+"""def get_all_images(folder_path):
+
     images = []
     # More comprehensive list of possible image extensions and variations
     extensions = (
@@ -27,6 +29,26 @@ def get_all_images(folder_path):
                 full_path = os.path.join(root, file)
                 images.append(full_path)
                 print(f"Found image: {full_path}")
+
+    print(f"Total images found: {len(images)}")
+    return images"""
+
+
+def get_all_images(folder_path):
+    """
+    Recursively get all image files from folder_path and its subfolders
+    """
+    images = []
+    valid_extensions = ('.png', '.jpg', '.jpeg', '.heic', '.webp')
+
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            if file.lower().endswith(tuple(ext.lower() for ext in valid_extensions)):
+                full_path = os.path.join(root, file)
+                images.append(full_path)
+                #print(f"Found image: {full_path}")
+            else:
+                print(f"Skipping non-image file: { os.path.join(root, file)}")
 
     print(f"Total images found: {len(images)}")
     return images
@@ -117,7 +139,7 @@ def create_collage_from_folder(input_folder, output_filename, width=7680, init_h
         random.shuffle(images)
 
     if not images:
-        print(f"No images found in {input_folder} or its subfolders!")
+        print(f"No images found in {input_folder}")
         return False
 
     print(f"Found {len(images)} images")
@@ -132,6 +154,9 @@ def create_collage_from_folder(input_folder, output_filename, width=7680, init_h
     return result
 
 
+
+
+
 # Usage example:
 if __name__ == '__main__':
     with open('ignore/paths.txt') as f:
@@ -139,4 +164,4 @@ if __name__ == '__main__':
     input_folder = paths[6].strip()
     output_file = paths[7].strip()
     print(f"Creating 8K collage from images in {input_folder} and saving to {output_file}")
-    create_collage_from_folder(input_folder, output_file, shuffle=True)  # Will create 8K width collage
+    create_collage_from_folder(input_folder, output_file, shuffle=True)
