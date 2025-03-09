@@ -380,7 +380,7 @@ def create_canvas_two(images, captions, output_path, project, class_level,year, 
     canvas.save(output_path)
 
 
-def create_canvas_custom_three(images, captions, output_path, project, class_level, year):
+def create_canvas_three(images, captions, output_path, project, class_level, year):
     # Determine the size of each quadrant
     quadrant_width = (canvas_width - 2 * border_padding - 3 * padding) // 2
     quadrant_height = (canvas_height - 2 * border_padding - 3 * padding - 2 * font_size - caption_padding) // 2
@@ -505,7 +505,7 @@ def create_canvas(images, captions, output_path, project, class_level, year):
         if(len(images)>=4):
             pass
         elif len(images) == 3:
-            create_canvas_custom_three(images, captions, output_path, project, class_level, year)
+            create_canvas_three(images, captions, output_path, project, class_level, year)
             return
         elif len(images) == 2:
             create_canvas_two(images, captions, output_path, project, class_level,year, maintain_size)
