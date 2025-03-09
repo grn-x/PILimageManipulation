@@ -49,7 +49,7 @@ Specifically these were used to render image compilations from past school proje
 │           forename6 surname6.jpg
 │
 └───23_24
-    ├───Projectname_12
+    ├───Projectname_9
     │       forename1 surname1.jpg
     │
     ├───Projectname_7
@@ -59,12 +59,9 @@ Specifically these were used to render image compilations from past school proje
     │       forename4 surname4.jpg
     │       forename5 surname5.jpg
     │
-    └───Tierskulptur_10
+    └───Projectname_10
             forename1 surname1.jpg
             forename2 surname2.jpg
-
-
-
 ```
 
 </details>
@@ -153,10 +150,17 @@ This script creates a collage from images in a specified folder and its subfolde
 - `init_height`: Initial height of the images in the collage (default: **400 pixels**).
 - `shuffle`: Boolean flag to shuffle the images before creating the collage (default: **False**).
 
+
+<br>
+<br>
+
 ---
 
 # Additional non-image-processing, helper scripts
 
+---
+
+---
 
 ## `HeicToJpg.py`
 This script converts `.heic` files to `.jpg` format using the Pillow library.  
@@ -177,7 +181,8 @@ This script contains three independent functions to collect, convert, and sort i
   Copies every file from the input partition to the output directory.
 - **`convert(HeicOnly=True)`**  
   Converts `.heic` files to `.jpg` in the output directory. If `HeicOnly` is `False`, it converts all image files to `.jpg`.
-    > **Note:** Internally the above `HeicToJpg.py` script is used to convert `.heic` files to `.jpg`.
+> [!NOTE]
+> Internally, the above `HeicToJpg.py` script is used to convert `.heic` files to `.jpg`.
 - **`sort()`**  
   Moves non-image files from the output directory to a separate sorting directory.
 
