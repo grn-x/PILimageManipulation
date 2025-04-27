@@ -7,8 +7,8 @@ with open('ignore/paths.txt') as f:
     paths = [line.strip() for line in f.readlines()]
 
 
-input_dir = paths[0] #15
-output_dir = paths[1]
+input_dir = paths[18] #15
+output_dir = paths[19]
 padding = 20
 border_padding = 90
 caption_padding = 20
@@ -22,7 +22,7 @@ custom_order = True  # whether the resulting canvas ordering should be done diff
 maintain_size = True  # only of importance for pages with less than 3 images,
 # decides whether to take the whole canvas, or stay at a quarter
 
-debug = False  # Add geometric lines to show where calculations are made, useful for debugging the cells, quadrants, alignment etc.
+debug = True  # Add geometric lines to show where calculations are made, useful for debugging the cells, quadrants, alignment etc.
 
 ignore_folders = paths[3:6] #why is the end index non inclusive?
 
@@ -681,8 +681,8 @@ for root, dirs, files in os.walk(input_dir):
         output_filename = get_unique_filename(output_dir, output_filename)
         output_path = os.path.join(output_dir, output_filename)
         year = root.split('\\')[-2].replace('_', '/')
-        #create_canvas(images, captions, output_path, project, class_level, year)
-        create_canvas(images, ['','','',''], output_path, project, class_level, year)
+        #create_canvas(images, ['','','',''], output_path, project, class_level, year) # overwrite captions/names with empty strings as per request by teacher
+        create_canvas(images, captions, output_path, project, class_level, year)
         num_files_saved += 1
 
 print(f"Processed {num_files_saved} images")

@@ -66,6 +66,25 @@ Specifically these were used to render image compilations from past school proje
 
 </details>
 
+
+# Demos: 
+
+
+
+| Col 1                                                              | Col 2                                                            |
+|--------------------------------------------------------------------|------------------------------------------------------------------|
+| ![Image 1](sample/emulated_environment/output/6_AssemblageQux.jpg) | ![Image 2](sample/emulated_environment/output/9_BazCollage.jpg)  |
+| ![Image 3](sample/emulated_environment/output/12_WorkOnBar.jpg)    | ![Image 4](sample/emulated_environment/output/13_ProjectFoo.jpg) |
+
+> [!NOTE] 
+> This is the ouptut of the script running on the emulated_environment directory. Following flags were set: center_images: false, custom_order: true, maintain_size: true, debug: true
+
+The sample images were pulled and created from https://www.fffuel.co/.
+
+The lines visible are for debugging purposes and visualize the programmatic constraints set in place by the script, they can be removed by setting the debug flag to false.
+
+# DOCUMENTATION
+
 ## `CanvasV9.py`
 This script creates a canvas with multiple images and captions, arranging them in a custom layouts depending on the number of images, and flags set.
 
@@ -170,7 +189,7 @@ This script converts `.heic` files to `.jpg` format using the Pillow library.
   Converts all `.heic` files in the specified directory to `.jpg`.
 - **`universal_to_jpg(input_dir)`**  
   Converts all image files in the specified directory to `.jpg`.
-- 
+
 ---
 
 ## `collect.py`
